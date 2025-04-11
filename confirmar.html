@@ -1,0 +1,39 @@
+<script>
+    function procesarPago() {
+      const nombre = document.getElementById('nombre').value.trim();
+      const tarjeta = document.getElementById('tarjeta').value.trim();
+      const fecha = document.getElementById('fecha').value.trim();
+      const cvv = document.getElementById('cvv').value.trim();
+  
+      const nombreRegex = /^[A-Za-zÁÉÍÓÚÑáéíóúñ\s]+$/;
+      const tarjetaRegex = /^\d{16}$/;
+      const fechaRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+      const cvvRegex = /^\d{3}$/;
+  
+      if (!nombreRegex.test(nombre)) {
+        alert('El nombre solo debe contener letras y espacios.');
+        return false;
+      }
+  
+      if (!tarjetaRegex.test(tarjeta)) {
+        alert('El número de tarjeta debe contener exactamente 16 dígitos.');
+        return false;
+      }
+  
+      if (!fechaRegex.test(fecha)) {
+        alert('La fecha debe estar en formato MM/AA (ej. 08/25).');
+        return false;
+      }
+  
+      if (!cvvRegex.test(cvv)) {
+        alert('El CVV debe contener exactamente 3 dígitos.');
+        return false;
+      }
+  
+      // ✅ Si todo está correcto, mostrar alerta y redirigir
+      alert('Pago procesado correctamente.');
+      window.location.href = 'confirmacion.html';
+      return false; // evitar que el formulario se recargue
+    }
+  </script>
+  

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrito de Compras</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Carrito de Compras</h1>
+  <ul id="lista-carrito"></ul>
+  <p><strong>Total:</strong> $<span id="total">0</span> CLP</p>
+
+  <!-- Botón para limpiar el carrito -->
+  <button onclick="limpiarCarrito1()">Limpiar carrito</button>
+
+  <!-- Botón para ir al pago -->
+  <a href="pago.html"><button>Ir al pago</button></a>
+
+  <!-- Botón para ir al inicio (pantalla de compra) -->
+  <a href="index.html"><button>Ir al inicio</button></a>
+
+  <script src="scripts.js"></script>
+  <script>
+    mostrarCarrito1(); // Llamada cuando se carga la página
+  </script>
+  
+</body>
+</html>
+

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sonidos del Alma - Tienda</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Sonidos del Alma</h1>
+    <nav>
+      <a href="#Guitarras">Guitarras</a>
+      <a href="#Teclados">Teclados</a>
+      <a href="#Percusion">Percusión</a>
+      <a href="#" onclick="toggleCarritoLateral()">Carrito</a>
+    </nav>
+       
+  </header>
+
+  <main>
+    <section id="productos">
+      <h2>Catálogo de Productos</h2>
+      <div class="Categoria" id="Guitarras">
+        <h3>Guitarras</h3>
+        <div class="contenedor-productos">
+          <div class="Producto">
+            <img src="/img/guitarra 1.jfif" alt="Guitarra Clásica" width="250" height="250">
+            <h4>Guitarra Clásica</h4>
+            <p>$125.990 CLP</p>
+            <button onclick="agregarAlCarrito1('Guitarra Clásica', 125990)">Agregar al carrito</button>
+          </div>
+      
+          <div class="Producto">
+            <img src="/img/guitarra2.jpg" alt="Guitarra Electrica" width="250" height="250">
+            <h4>Guitarra Electrica</h4>
+            <p>$399.990 CLP</p>
+            <button onclick="agregarAlCarrito1('Guitarra Electrica', 399990)">Agregar al carrito</button>
+          </div>
+      
+          <div class="Producto">
+            <img src="/img/guitarra3.webp" alt="Guitarra Electroacustica" width="250" height="250">
+            <h4>Guitarra Electroacustica</h4>
+            <p>$135.990 CLP</p>
+            <button onclick="agregarAlCarrito1('Guitarra Electroacustica', 135.990)">Agregar al carrito</button>
+          </div>
+
+          <div class="Producto">
+            <img src="/img/guitarra4.webp" alt="Guitarra Clasica" width="250" height="250">
+            <h4>Guitarra Clásica</h4>
+            <p>$99.990 CLP</p>
+            <button onclick="agregarAlCarrito1('Guitarra Clasica', 99.990)">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+      <div class="Categoria" id="Teclados">
+          <h3>Teclados</h3>
+          <div class="contenedor-productos">
+          <div class="Producto">
+            <img src="/img/teclado1.jpg" alt="Teclado Electrónico" width="250" height="250">
+            <h4>Teclado Electrónico</h4>
+            <p>$120.000 CLP</p>
+            <button onclick="agregarAlCarrito1('Teclado Electrónico', 120000)">Agregar al carrito</button>
+          </div>
+  
+          <div class="Producto">
+            <img src="/img/teclado2.webp" alt="Set Teclado " width="250" height="250">
+            <h4>Set Teclado</h4>
+            <p>$185.990 CLP</p>
+            <button onclick="agregarAlCarrito1('Set Teclado', 185990)">Agregar al carrito</button>
+          </div>
+  
+          <div class="Producto">
+            <img src="/img/piano1.webp" alt="Piano Digital" width="250" height="250">
+            <h4>Piano Digital</h4>
+            <p>$1.200.000 CLP</p>
+            <button onclick="agregarAlCarrito1('Piano Digital', 1200000)">Agregar al carrito</button>
+          </div>
+        </div>
+
+      </div>
+      
+
+      <div class="Categoria" id="Percusion">
+        <h3>Percusión</h3>
+        <div class="contenedor-productos">
+        <div class="producto">
+          <img src="/img/bateria1.webp" alt="Batería Acústica" width="250" height="250">
+          <h4>Batería Acústica</h4>
+          <p>$390.000 CLP</p>
+          <button onclick="agregarAlCarrito1('Batería Acústica', 390000)">Agregar al carrito</button>
+        </div>
+
+        <div class="producto">
+          <img src="/img/bateria2.webp" alt="Bateria Acustica" width="250" height="250">
+          <h4>Baterìa Acustica</h4>
+          <p>$319.000 CLP</p>
+          <button onclick="agregarAlCarrito1('Bateria Acustica', 319000)">Agregar al carrito</button>
+        </div>
+
+        <div class="producto">
+          <img src="/img/bateria3.webp" alt="Bateria Electronica" width="250" height="250">
+          <h4>Bateria Electronica</h4>
+          <p>$330.000 CLP</p>
+          <button onclick="agregarAlCarrito1('Bateria Electronica', 330000)">Agregar al carrito</button>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <div class="ir-a-secciones">
+      <a href="/carrito.html"><button>Ir al Carrito</button></a>
+      <a href="/pago.html"><button>Ir a Pago</button></a>
+    </div>
+
+    <!-- Panel lateral del carrito -->
+<div id="carrito-lateral" class="carrito-lateral">
+  <div class="carrito-header">
+    <h3>Carrito</h3>
+    <button onclick="toggleCarritoLateral()" class="cerrar-carrito">✕</button>
+  </div>
+  <ul id="lista-carrito-lateral"></ul>
+  <p><strong>Total:</strong> $<span id="total-lateral">0</span> CLP</p>
+  <button onclick="limpiarCarrito1()">Limpiar carrito</button>
+  <a href="/pago.html"><button>Ir a Pago</button></a>
+</div>
+
+<!-- Fondo oscuro detrás del panel -->
+<div id="overlay" class="overlay"></div>
+
+  </main>
+  
+  <footer>
+    <p>&copy; 2025 Sonidos del Alma</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <div id="toast" class="toast"></div>
+
+  <!-- Panel lateral del carrito -->
+<div id="carrito-lateral" class="carrito-lateral">
+  <h3>Carrito</h3>
+  <ul id="lista-carrito-lateral"></ul>
+  <p><strong>Total:</strong> $<span id="total-lateral">0</span> CLP</p>
+  <a href="/pago.html"><button>Ir a Pago</button></a>
+</div>
+
+<!-- Fondo oscuro cuando el panel está visible -->
+<div id="overlay" class="overlay"></div>
+
+</body>
+</html>

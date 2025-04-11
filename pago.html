@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pago - Sonidos del Alma</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --morado: #00796b;
+      --amarillo: white;
+      --fondo: #80cbc4;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--fondo);
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: var(--morado);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    nav a {
+      color: var(--amarillo);
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 70vh;
+    }
+
+    form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 5px 0;
+      border: 2px solid var(--morado);
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus {
+      border-color: var(--amarillo);
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-bottom: 10px;
+      display: block;
+      height: 18px;
+    }
+
+    button {
+      width: 100%;
+      background-color: var(--morado);
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #4a148c;
+    }
+
+    .success {
+      text-align: center;
+      color: green;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pago Electrónico</h1>
+    <nav>
+      <a href="index.html">Volver a la tienda</a>
+      <a href="carrito.html">Ver Carrito</a>
+    </nav>
+  </header>
+
+  <main>
+    <form onsubmit="return procesarPago()">
+      <input type="text" id="nombre" placeholder="Nombre completo" required>
+      <span class="error" id="error-nombre"></span>
+
+      <input type="text" id="tarjeta" placeholder="Número de tarjeta" required>
+      <span class="error" id="error-tarjeta"></span>
+
+      <input type="text" id="fecha" placeholder="MM/AA" required>
+      <span class="error" id="error-fecha"></span>
+
+      <input type="text" id="cvv" placeholder="CVV" required>
+      <span class="error" id="error-cvv"></span>
+
+      <button type="submit">Pagar</button>
+      <div class="success" id="mensaje-exito"></div>
+    </form>
+  </main>
+
+  <script>
+    function procesarPago() {
+      const nombre = document.getElementById('nombre').value.trim();
+      const tarjeta = document.getElementById('tarjeta').value.trim();
+      const fecha = document.getElementById('fecha').value.trim();
+      const cvv = document.getElementById('cvv').value.trim();
+
+      const errorNombre = document.getElementById('error-nombre');
+      const errorTarjeta = document.getElementById('error-tarjeta');
+      const errorFecha = document.getElementById('error-fecha');
+      const errorCvv = document.getElementById('error-cvv');
+      const mensajeExito = document.getElementById('mensaje-exito');
+
+      let valido = true;
+
+      // Resetear errores y mensaje de éxito
+      errorNombre.textContent = '';
+      errorTarjeta.textContent = '';
+      errorFecha.textContent = '';
+      errorCvv.textContent = '';
+      mensajeExito.textContent = '';
+
+      // Expresiones regulares
+      const nombreRegex = /^[A-Za-zÁÉÍÓÚÑáéíóúñ\s]+$/;
+      const tarjetaRegex = /^\d{16}$/;
+      const fechaRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+      const cvvRegex = /^\d{3}$/;
+
+      if (!nombreRegex.test(nombre)) {
+        errorNombre.textContent = 'El nombre solo debe contener letras y espacios.';
+        valido = false;
+      }
+
+      if (!tarjetaRegex.test(tarjeta)) {
+        errorTarjeta.textContent = 'El número de tarjeta debe tener 16 dígitos.';
+        valido = false;
+      }
+
+      if (!fechaRegex.test(fecha)) {
+        errorFecha.textContent = 'Formato inválido. Ej: 08/25';
+        valido = false;
+      }
+
+      if (!cvvRegex.test(cvv)) {
+        errorCvv.textContent = 'El CVV debe tener 3 dígitos.';
+        valido = false;
+      }
+
+      if (valido) {
+        mensajeExito.textContent = '✅ Pago procesado correctamente.';
+      }
+
+      return false; 
+    }
+  </script>
+</body>
+</html>
